@@ -12,9 +12,7 @@ German/Dutch dictionary.
 ```
 var uitmuntend = require('uitmuntend');
 
-var translations = uitmuntend.query('woord', function(res) {
-  console.log(res);
-});
+uitmuntend.query('woord', console.log(res));
 ```
 
 ## License
