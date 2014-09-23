@@ -12,9 +12,6 @@
     "type": "git",
     "url": "git://github.com/felixfischer/uitmuntend.git"
   },
-  "scripts": {
-    "test": "node index.js sägen"
-  },
   "license": "MIT",
   "dependencies": {
     "request": "latest",
