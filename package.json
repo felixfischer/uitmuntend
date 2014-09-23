@@ -1,6 +1,6 @@
 {
   "name": "uitmuntend",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "unofficial scraper for the uitmuntend.de dictionary",
   "main": "index.js",
   "author": "Felix Fischer <kontakt@felixfischer.com>",
@@ -12,9 +12,12 @@
     "type": "git",
     "url": "git://github.com/felixfischer/uitmuntend.git"
   },
+  "scripts": {
+    "test": "node test.js"
+  },
   "license": "MIT",
   "dependencies": {
-    "request": "latest",
+    "follow-redirects": "latest",
     "cheerio": "latest",
     "iconv-lite": "latest"
   }
