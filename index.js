@@ -2,14 +2,13 @@
 
 var request = require('request'),
     cheerio = require('cheerio'),
-    unorm = require('unorm'),
     iconv = require('iconv-lite');
 
 var endpoint = 'http://www.uitmuntend.de/search.html?search=';
 
 module.exports = {
   query: function(word, callback) {
-    var reqUrl = endpoint + escape(unorm.nfc(word));
+    var reqUrl = endpoint + escape(word);
     var options = {'uri': reqUrl, 'encoding': null};
     request(options, function (error, response, body) {
       if (!error && response.statusCode == 200) {
