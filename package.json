@@ -1,0 +1,25 @@
+{
+  "name": "uitmuntend",
+  "version": "1.0.0",
+  "description": "unofficial scraper for the uitmuntend.de dictionary",
+  "main": "index.js",
+  "author": "Felix Fischer <kontakt@felixfischer.com>",
+  "bugs": {
+    "mail": "kontakt@felixfischer.com",
+    "url": "http://felixfischer.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/felixfischer/uitmuntend.git"
+  },
+  "scripts": {
+    "test": "node index.js sägen"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "request": "latest",
+    "cheerio": "latest",
+    "unorm": "latest",
+    "iconv-lite": "latest"
+  }
+}
