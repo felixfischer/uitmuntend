@@ -1,6 +1,6 @@
 {
   "name": "uitmuntend",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "unofficial scraper for the uitmuntend.de dictionary",
   "main": "index.js",
   "author": "Felix Fischer <kontakt@felixfischer.com>",

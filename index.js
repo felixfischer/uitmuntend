@@ -18,7 +18,8 @@ var Uitmuntend = {
   fetch: function(word, callback) {
     var options = {
       host: 'www.uitmuntend.de',
-      path: '/search.html?search=' + escape(word)
+      path: '/search.html?search=' + escape(word),
+      agent: false
     };
     var req = http.get(options, function(res) {
       var bodyChunks = [];
