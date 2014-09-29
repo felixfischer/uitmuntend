@@ -1,61 +1,54 @@
 "use strict";
 
-var http = require('follow-redirects').http,
-    cheerio = require('cheerio'),
-    iconv = require('iconv-lite');
+var http = require('follow-redirects').http;
 
-module.exports = {
-  query: function(word, callback) {
-    Uitmuntend.fetch(word, function(res) {
-      callback(Uitmuntend.parse(res));
-    })
-  },
+var cheerio = require('cheerio')
+  , iconv = require('iconv-lite');
 
-}
+function query(word, callback) {
 
-var Uitmuntend = {
+  var options = {
+    host: 'www.uitmuntend.de',
+    path: '/search.html?search=' + escape(word),
+    agent: false
+  }
 
-  fetch: function(word, callback) {
-    var options = {
-      host: 'www.uitmuntend.de',
-      path: '/search.html?search=' + escape(word),
-      agent: false
-    };
+  fetch(word, function(res){callback(parse(res))})
+
+  function fetch(word, callback) {
     var req = http.get(options, function(res) {
-      var bodyChunks = [];
+      var bodyChunks = []
       res.on('data', function(chunk) {
-        bodyChunks.push(chunk);
+        bodyChunks.push(chunk)
       }).on('end', function() {
-        var body = Buffer.concat(bodyChunks);
-        callback(iconv.decode(body, 'iso-8859-1'));
+        var body = Buffer.concat(bodyChunks)
+        callback(iconv.decode(body, 'iso-8859-1'))
       })
-    });
-    req.on('error', function(e) {
-      throw "error fetching results";
-    });
-  },
+    })
+    req.on('error', function(e) {throw e})
+  }
 
-  parse: function(body) {
-    var res = {'translations': []};
-    var $ = cheerio.load(body);
+  function parse(body) {
+    var $ = cheerio.load(body)
+    var res = {'options': options, 'translations': []}
     var trs = $('.t2 tbody tr').filter(function(i, el) {
-      return el.children.length == 5;
-    });
-    var clean = function(item) {
-      if (item.substr(item.length-2) == ' |') {
-        item = item.substr(0, item.length-2);
-      };
-      return item;
-    };
+      return el.children.length == 5
+    })
+    function clean(item) {
+      if (item.substr(item.length-2) == ' |')
+        item = item.substr(0, item.length-2)
+      return item
+    }
     for (var i = 0, len = trs.length; i < len; i++) {
-      var tds = $(trs[i]).children();
+      var tds = $(trs[i]).children()
       res.translations.push({
         'original': clean($(tds[0]).text()),
         'translation': clean($(tds[1]).text())
-      });
+      })
     }
-    return res;
+    return res
   }
 
 }
 
+exports.query = query;
