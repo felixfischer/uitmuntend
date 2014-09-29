@@ -12,12 +12,16 @@
     "url": "git://github.com/felixfischer/uitmuntend.git"
   },
   "scripts": {
-    "test": "node test.js"
+    "test": "mocha"
   },
   "license": "MIT",
   "dependencies": {
     "follow-redirects": "latest",
     "cheerio": "latest",
     "iconv-lite": "latest"
+  },
+  "devDependencies": {
+    "mocha": "latest",
+    "should": "latest"
   }
 }
