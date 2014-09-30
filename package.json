@@ -16,9 +16,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "follow-redirects": "latest",
     "cheerio": "latest",
-    "iconv-lite": "latest"
+    "follow-redirects": "latest",
+    "iconv-lite": "latest",
+    "lodash": "^2.4.1"
   },
   "devDependencies": {
     "mocha": "latest",
