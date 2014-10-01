@@ -2,10 +2,14 @@
 
 var should = require('should')
   , fs = require('fs')
+  , util = require('util')
   , uitmuntend = require('../index.js')
 
 var cacheFile = './ds_cache.json'
 
+function inspect(obj){
+  //console.log(util.inspect(obj, {colors: true, depth: 5}))
+}
 
 describe("search(arg, callback)", function(){
 
@@ -22,6 +26,7 @@ describe("search(arg, callback)", function(){
       res.translations.should.be.an.Array.which.is.empty
       res.should.be.an.Object.with.property('results')
       res.results.should.be.an.Array.which.is.empty
+      inspect(res)
       done()
     })
   })
@@ -36,6 +41,8 @@ describe("search(arg, callback)", function(){
         res.results[0].should.be.an.Object.with.keys('nl', 'de', 'type')
         res.results[0].nl.should.containEql(expectRes1)
         res.results[0].de.should.containEql(expectRes2)
+        res.results[0].type.should.containEql('direkte Treffer')
+        inspect(res)
         done()
       })
     })

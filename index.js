@@ -80,10 +80,10 @@ function load(options, callback){
 function parse(body) {
   var $ = cheerio.load(iconv.decode(body, 'iso-8859-1'))
   var out = { results: [], translations: [] }
+  var heading = null
   $('.t2 tbody tr').each(function(i, el){
     var cells = $(this).children()
     var rowType = _.pluck(cells, 'name').toString()
-    var heading = null
     switch (rowType) {
       case 'th': // section header
         heading = $(cells).text()
