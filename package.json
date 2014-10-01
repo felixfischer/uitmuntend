@@ -17,9 +17,10 @@
   "license": "MIT",
   "dependencies": {
     "cheerio": "latest",
+    "ds-cache": "latest",
     "follow-redirects": "latest",
     "iconv-lite": "latest",
-    "lodash": "^2.4.1"
+    "lodash": "latest"
   },
   "devDependencies": {
     "mocha": "latest",

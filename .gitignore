@@ -1,3 +1,4 @@
 node_modules
+ds_cache.json
 *.log
 *.alfredworkflow
